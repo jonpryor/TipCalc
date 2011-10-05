@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TipCalc/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TipCalc.Util/TipInfo.cs">
     <Files>
       <File FileName="TipCalc/Main.cs" Line="21" Column="63" />
-      <File FileName="TipCalc.Util/TipInfo" Line="19" Column="43" />
+      <File FileName="TipCalc.Util/TipInfo.cs" Line="20" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
