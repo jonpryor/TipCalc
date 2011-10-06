@@ -3,7 +3,9 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="TipCalc.Util/TipInfo.cs">
     <Files>
       <File FileName="TipCalc/Main.cs" Line="21" Column="63" />
-      <File FileName="TipCalc.Util/TipInfo.cs" Line="20" Column="5" />
+      <File FileName="TipCalc.UI.iOS/TipCalc.UI.iOSViewController.designer.cs" Line="1" Column="1" />
+      <File FileName="TipCalc.UI.iOS/TipCalc.UI.iOSViewController.cs" Line="1" Column="1" />
+      <File FileName="TipCalc.Util/TipInfo.cs" Line="9" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
