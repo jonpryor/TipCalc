@@ -58,4 +58,10 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\TipCalc.Util.Android\TipCalc.Util.Android.csproj">
+      <Project>{C77DDBF4-43A8-483A-8465-3AADDD18DFAD}</Project>
+      <Name>TipCalc.Util.Android</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

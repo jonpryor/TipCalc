@@ -73,6 +73,6 @@ Global
 		{C77DDBF4-43A8-483A-8465-3AADDD18DFAD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = TipCalc\TipCalc.csproj
+		StartupItem = TipCalc.UI.Android\TipCalc.UI.Android.csproj
 	EndGlobalSection
 EndGlobal

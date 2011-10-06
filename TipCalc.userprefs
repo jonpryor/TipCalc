@@ -1,16 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TipCalc.UI.Android/Activity1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TipCalc.UI.Android/Resources/layout/Main.axml">
     <Files>
       <File FileName="TipCalc/Main.cs" Line="21" Column="63" />
       <File FileName="TipCalc.Util/TipInfo.cs" Line="1" Column="1" />
       <File FileName="TipCalc-UI-iOS/MainViewController.designer.cs" Line="1" Column="1" />
       <File FileName="TipCalc-UI-iOS/MainViewController.cs" Line="9" Column="32" />
-      <File FileName="TipCalc.UI.Android/Activity1.cs" Line="1" Column="1" />
+      <File FileName="TipCalc.UI.Android/Activity1.cs" Line="10" Column="15" />
+      <File FileName="TipCalc.UI.Android/Resources/layout/Main.axml" Line="36" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.TipCalc.UI.Android />
 </Properties>
