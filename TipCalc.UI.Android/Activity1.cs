@@ -22,6 +22,14 @@ namespace TipCalc.UI.Android
 		TextView Total;
 		TextView TipValue;
 
+		public Activity1 ()
+		{
+			info.TipValueChanged += (sender, e) => {
+				TipValue.Text  = info.TipValue.ToString ();
+				Total.Text     = (info.TipValue + info.Total).ToString ();
+			};
+		}
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -31,10 +39,10 @@ namespace TipCalc.UI.Android
 
 			TipValue    = FindViewById<TextView>(Resource.Id.TipValue);
 			Total       = FindViewById<TextView>(Resource.Id.Total);
+			TipPercent  = FindViewById<TextView>(Resource.Id.TipPercent);
 
-			TipPercent = FindViewById<TextView>(Resource.Id.TipPercent);
 			TipPercent.AfterTextChanged += (sender, e) => {
-				UpdateTipPercent (Parse (TipPercent));
+				info.TipPercent = Parse (TipPercent);
 			};
 
 			FindViewById<SeekBar>(Resource.Id.TipPercentSeekbar).SetOnSeekBarChangeListener (new SeekBarChangeListener (this));
@@ -42,30 +50,23 @@ namespace TipCalc.UI.Android
 			var subtotal = FindViewById<TextView>(Resource.Id.Subtotal);
 			subtotal.AfterTextChanged += (sender, e) => {
 				info.Subtotal = Parse (subtotal);
-				UpdateTipPercent (info.TipPercent);
 			};
 			var total = FindViewById<TextView>(Resource.Id.ReceiptTotal);
 			total.AfterTextChanged += (sender, e) => {
 				info.Total = Parse (total);
-				UpdateTipPercent (info.TipPercent);
 			};
 		}
 
 		static decimal Parse (TextView field)
 		{
+			if (field.Text == "")
+				return 0m;
 			try {
 				return Convert.ToDecimal (field.Text);
 			} catch (Exception e) {
-				field.Text = e.Message;
+				field.Text = "";
 				return 0m;
 			}
-		}
-
-		void UpdateTipPercent (decimal newPercent)
-		{
-			info.TipPercent = newPercent;
-			TipValue.Text = info.TipValue.ToString ();
-			Total.Text = (info.Total + info.TipValue).ToString ();
 		}
 
 		class SeekBarChangeListener : Java.Lang.Object, SeekBar.IOnSeekBarChangeListener {
@@ -80,7 +81,6 @@ namespace TipCalc.UI.Android
 			public void OnProgressChanged (SeekBar seekBar, int progress, bool fromUser)
 			{
 				context.TipPercent.Text = progress.ToString ();
-				context.UpdateTipPercent ((decimal) progress);
 			}
 
 			public void OnStartTrackingTouch (SeekBar seekBar)

@@ -4,9 +4,45 @@ namespace TipCalc.Util
 {
 	public class TipInfo
 	{
-		public decimal Total { get; set; }
-		public decimal Subtotal { get; set; }
-		public decimal TipPercent { get; set; }
+		decimal total;
+		public decimal Total {
+			get {return total;}
+			set {
+				if (total != value) {
+					total = value;
+					OnTipValueChanged ();
+				}
+			}
+		}
+
+		decimal subTotal;
+		public decimal Subtotal {
+			get {return subTotal;}
+			set {
+				if (subTotal != value) {
+					subTotal = value;
+					OnTipValueChanged ();
+				}
+			}
+		}
+
+		decimal tipPercent;
+		public decimal TipPercent {
+			get {return tipPercent;}
+			set {
+				if (value != tipPercent) {
+					tipPercent = value;
+					OnTipValueChanged ();
+				}
+			}
+		}
+
+		private void OnTipValueChanged ()
+		{
+			var h = TipValueChanged;
+			if (h != null)
+				h (this, EventArgs.Empty);
+		}
 
 		public decimal Tax {
 			get {return Total - Subtotal;}
@@ -31,6 +67,8 @@ namespace TipCalc.Util
 				return value - Total;
 			}
 		}
+
+		public event EventHandler TipValueChanged;
 	}
 }
 
