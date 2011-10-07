@@ -10,11 +10,17 @@ namespace TipCalcUIiOS
 	{
 		UIPopoverController flipsidePopoverController;
 		
-		TipInfo info = new TipInfo ();
+		TipInfo info = new TipInfo () {
+			TipPercent = 15,
+		};
 		
 		public MainViewController (string nibName, NSBundle bundle) : base (nibName, bundle)
 		{
 			// Custom initialization
+			info.TipValueChanged += (sender, e) => {
+				TipValue.Text  = info.TipValue.ToString ();
+				Total.Text     = (info.TipValue + info.Total).ToString ();
+			};
 		}
 		
 		public override void ViewDidLoad ()
@@ -25,38 +31,29 @@ namespace TipCalcUIiOS
 			
 			Subtotal.EditingDidEnd += (sender, e) => {
 				info.Subtotal = Parse (Subtotal);
-				UpdateTipPercent (Parse (TipPercent));
-				Subtotal.ResignFirstResponder ();
 			};
 			ReceiptTotal.EditingDidEnd += (sender, e) => {
 				info.Total = Parse (ReceiptTotal);
-				UpdateTipPercent (Parse (TipPercent));
-				ReceiptTotal.ResignFirstResponder ();
 			};
 			TipPercent.EditingDidEnd += (sender, e) => {
-				UpdateTipPercent (Parse (TipPercent));
+				info.TipPercent = Parse (TipPercent);
 			};
 			TipPercentSlider.ValueChanged += (sender, e) => {
 				TipPercent.Text = Math.Truncate(TipPercentSlider.Value).ToString ();
-				UpdateTipPercent (Math.Truncate ((decimal) TipPercentSlider.Value));
+				info.TipPercent = (decimal) TipPercentSlider.Value;
 			};
 		}
 		
 		static decimal Parse (UITextField field)
 		{
+			if (field.Text == "")
+				return 0m;
 			try {
 				return Convert.ToDecimal (field.Text);
-			} catch (Exception e) {
-				field.Text = e.Message;
+			} catch (Exception) {
+				field.Text = "";
 				return 0m;
 			}
-		}
-
-		void UpdateTipPercent (decimal newPercent)
-		{
-			info.TipPercent = newPercent;
-			TipValue.Text = info.TipValue.ToString ();
-			Total.Text = (info.Total + info.TipValue).ToString ();
 		}
 
 		public override bool ShouldAutorotateToInterfaceOrientation (UIInterfaceOrientation toInterfaceOrientation)
